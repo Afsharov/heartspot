@@ -14,8 +14,11 @@ We use [Github](https://github.com/) for versioning. For the versions available,
 
 ## Authors
 
-* **Suheng Shi** - [suhengshi](https://github.com/suhengshi) - 
+* **Abhinav Sharma** - ... - 
+* **Jintai Liu** - ... - 
+* **Karl Lindborg** - ... - 
 * **Masud Afschar** - [Afsharov](https://iteragit.iteratec.de/mafschar) - *Developer*
+* **Suheng Shi** - [suhengshi](https://github.com/suhengshi) - 
 * **Winner Ng** - [winnerng](https://github.com/winnerng) - 
 
 ## License
