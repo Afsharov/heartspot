@@ -1,0 +1,11 @@
+Package: heartspot
+Title: HeartSpot
+Version: 0.1.0
+Authors@R: person("Masud", "Afschar", email =
+ "m.afschar@protonmail.com", role = c("aut", "cre"))
+Description: Predicting Heart Disease and its Intensity
+Depends: R (>= 3.1.0)
+License: MIT
+LazyData: true
+Imports:
+ shiny
