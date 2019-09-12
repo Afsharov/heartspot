@@ -19,6 +19,15 @@ before_install:
   - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
   - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then hash -r; fi"
   - "phantomjs --version"
+
+r_packages:
+  - covr
   
+env:
+  - CODECOV_TOKEN="b86b39f1-47bd-4afe-9ea0-b3154c37a0e8"
+
 script:
   - R -f run_tests.R
+  
+after_success:
+  - Rscript -e 'library(covr); codecov()'
