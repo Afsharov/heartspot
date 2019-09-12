@@ -1,7 +1,7 @@
 # HeartSpot
 > Predicting Heart Disease and its Intensity
 
-[![Build Status](https://travis-ci.com/Afsharov/heartspot.svg?token=Sph7DpuhuszAqqWigRVa&branch=master)](https://travis-ci.com/Afsharov/heartspot) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![Build Status](https://travis-ci.com/Afsharov/heartspot.svg?token=Sph7DpuhuszAqqWigRVa&branch=master)](https://travis-ci.com/Afsharov/heartspot) [![codecov](https://codecov.io/gh/Afsharov/heartspot/branch/master/graph/badge.svg?token=U9W1o4pZW8)](https://codecov.io/gh/Afsharov/heartspot) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
 ## Built With
 
