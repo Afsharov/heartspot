@@ -15,8 +15,8 @@ We use [Github](https://github.com/) for versioning. For the versions available,
 ## Authors
 
 * **Abhinav Sharma** - ... - 
-* **Jintai Liu** - ... - 
-* **Karl Lindborg** - ... - 
+* **Jintai Liu** - [LeooLeoo](https://github.com/LeooLeoo) - 
+* **Karl Lindborg** - [Karllindborg](https://github.com/Karllindborg) - 
 * **Masud Afschar** - [Afsharov](https://github.com/Afsharov) - *Developer*
 * **Suheng Shi** - [suhengshi](https://github.com/suhengshi) - 
 * **Winner Ng** - [winnerng](https://github.com/winnerng) - 
