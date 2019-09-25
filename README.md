@@ -14,7 +14,7 @@ We use [Github](https://github.com/) for versioning. For the versions available,
 
 ## Authors
 
-* **Abhinav Sharma** - [abhinavsharma1423] - 
+* **Abhinav Sharma** - [abhinavsharma1423](https://github.com/abhinavsharma1423) -
 * **Jintai Liu** - [LeooLeoo](https://github.com/LeooLeoo) - 
 * **Karl Lindborg** - [Karllindborg](https://github.com/Karllindborg) - 
 * **Masud Afschar** - [Afsharov](https://github.com/Afsharov) - *Developer*
