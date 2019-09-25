@@ -71,14 +71,14 @@ ui <- fluidPage(
           " ",
           'Lab results:',
           sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2),
-          selectInput('fbs', 'Fasting blood sugar >120mg/dl', c('no','yes'))
+          selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'))
           ),
         verticalLayout(
         'ECG&Imaging:',
           textInput('threstbps', 'Resting blood pressure in mmHg','80'),
-          textInput('thalach', 'Maximum heart rate achieved in mmHg','180'),
+          textInput('thalach', 'Maximum heart rate achieved per minute','180'),
           selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria')),
-          sliderInput('oldpeak', 'ST depression induced by exercise relative to res',0,5,3.0,0.2),
+          sliderInput('oldpeak', 'ST depression induced by exercise relative to rest',0,5,3.0,0.2),
           selectInput('slope', 'The slope of the peak exercise ST segment', c('upsloping','flat', 'downsloping')),
           selectInput('ca', 'Number of major vessels(0-3) colored by fluoroscopy', c('0','1', '2','3')),
           submitButton(text="submit", icon=NULL)
