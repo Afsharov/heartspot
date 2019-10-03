@@ -9,5 +9,6 @@ License: MIT
 LazyData: true
 Imports:
  shiny,
+ shinydashboard,
  shinytest,
  testthat

@@ -1,4 +1,6 @@
 library(shiny)
+library(shinydashboard)
+
 #demo
 data <- read.csv(file="processed.cleveland.csv",sep = "") 
 
@@ -14,11 +16,11 @@ datanorm <- as.data.frame(lapply(datasub, normalize))
 k_means<-function(x, n=3){
   nclusters <- n #generalize
   observations <- nrow(x)
-  set.seed(5) #注意设置种子
-  group <- sample(1:nclusters, nrow(x), replace = T) #并分组
+  set.seed(5) #注??????????
+  group <- sample(1:nclusters, nrow(x), replace = T) #??????
   x.cluster <- cbind(x, group)
   
-  #之后的内容即上一步的内容
+  #之???????菁???一????????
   while(TRUE){ 
     centroid <- c()
     distance <- c()
@@ -53,45 +55,67 @@ k_means<-function(x, n=3){
 
 
 # Define UI (fluidPage is a flexible default choice) ----
-ui <- fluidPage(
-  titlePanel("HeartSpot"),
-  sidebarLayout( 
-    mainPanel(
-      flowLayout(
-        verticalLayout( 
-          "Demographic:",
-          #selectInput函数相当于下拉框
-          textInput('Age', 'Age','25'),  
-          selectInput('Sex', 'Gender',  c('male','female', 'unknown')),
-          " ",
-          "Symptoms&History:",
-          selectInput('CP', 'Chest Pain',  c('typical angina','atypical angina', 'non-anginal pain', 'asymptomatic')),
-          selectInput('exang', 'Exercise-induced angina', c('no','yes')),
-          selectInput('thal', 'Thallium stress test',  c('normal','fixed defect', 'reversible defect')),
-          " ",
-          'Lab results:',
-          sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2),
-          selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'))
+ui <- dashboardPage(
+  dashboardHeader(title = "HeartSpot"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Prediction", tabName = "prediction", icon = icon("dashboard")),
+      menuItem("Widgets", tabName = "widgets", icon = icon("th"))
+    )
+  ),
+  dashboardBody(
+    fluidPage(
+      splitLayout(cellWidths = c("50%", "50%"),
+        fluidPage(
+          fluidRow(
+            column(6,
+              h4("Demographics:"),
+              textInput('Age', 'Age','25', width = "50%"),  
+              selectInput('Sex', 'Gender',  c('male','female', 'unknown'), width = "50%")
+            ),
+            column(6,
+              h4("Symptoms & History:"),
+              selectInput('CP', 'Chest Pain',  c('typical angina','atypical angina', 'non-anginal pain', 'asymptomatic'), width = "75%"),
+              selectInput('exang', 'Exercise-induced angina', c('no','yes'), width = "75%"),
+              selectInput('thal', 'Thallium stress test',  c('normal','fixed defect', 'reversible defect'), width = "75%")
+            )
           ),
-        verticalLayout(
-        'ECG&Imaging:',
-          textInput('threstbps', 'Resting blood pressure in mmHg','80'),
-          textInput('thalach', 'Maximum heart rate achieved per minute','180'),
-          selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria')),
-          sliderInput('oldpeak', 'ST depression induced by exercise relative to rest',0,5,3.0,0.2),
-          selectInput('slope', 'The slope of the peak exercise ST segment', c('upsloping','flat', 'downsloping')),
-          selectInput('ca', 'Number of major vessels(0-3) colored by fluoroscopy', c('0','1', '2','3')),
-          submitButton(text="submit", icon=NULL)
+          fluidRow(
+              h4('ECG & Imaging:'),
+              column(6,
+               sliderInput('oldpeak', 'ST depression',0,5,3.0,0.2),
+               selectInput('slope', 'The slope of the peak exercise ST segment', c('upsloping','flat', 'downsloping'), width = "75%"),
+               selectInput('ca', 'Major vessels colored by fluoroscopy', c('0','1', '2','3'), width = "75%")
+              ),
+              column(6,
+                     textInput('threstbps', 'Resting blood pressure in mmHg','80', width = "75%"),
+                     textInput('thalach', 'Maximum heart rate achieved per minute','180', width = "75%"),
+                     selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'), width = "75%")
+              )
+          ),
+          fluidRow(
+           h4('Lab results:'),
+           fluidRow(
+             column(6,
+              sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2)
+             ),
+             column(6,
+              selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'), width = "50%")
+             )
+           )
           )
-        ), width = 4
+        ),
+        verticalLayout(
+          h2("Prediciton"),
+          submitButton(text="submit", icon=NULL),
+          plotOutput('plot1'),
+          textOutput("text")
+        )
       )
-    , 
-    sidebarPanel(
-      plotOutput('plot1'),
-      textOutput("text"),
-      width = 6)
-  ) 
+    )
+  )
 )
+
 # Define server logic ----
 server <- function(input, output) {
   clusters <- reactive({
