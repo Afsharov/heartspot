@@ -69,15 +69,15 @@ ui <- dashboardPage(
         fluidPage(
           fluidRow(
             column(6,
+                   h4("Symptoms & History:"),
+                   selectInput('CP', 'Chest Pain',  c('typical angina','atypical angina', 'non-anginal pain', 'asymptomatic'), width = "75%"),
+                   selectInput('exang', 'Exercise-induced angina', c('no','yes'), width = "75%"),
+                   selectInput('thal', 'Thallium stress test',  c('normal','fixed defect', 'reversible defect'), width = "75%")
+            ),
+            column(6,
               h4("Demographics:"),
               textInput('Age', 'Age','25', width = "50%"),  
               selectInput('Sex', 'Gender',  c('male','female', 'unknown'), width = "50%")
-            ),
-            column(6,
-              h4("Symptoms & History:"),
-              selectInput('CP', 'Chest Pain',  c('typical angina','atypical angina', 'non-anginal pain', 'asymptomatic'), width = "75%"),
-              selectInput('exang', 'Exercise-induced angina', c('no','yes'), width = "75%"),
-              selectInput('thal', 'Thallium stress test',  c('normal','fixed defect', 'reversible defect'), width = "75%")
             )
           ),
           fluidRow(
@@ -88,21 +88,21 @@ ui <- dashboardPage(
                selectInput('ca', 'Major vessels colored by fluoroscopy', c('0','1', '2','3'), width = "75%")
               ),
               column(6,
-                     textInput('threstbps', 'Resting blood pressure in mmHg','80', width = "75%"),
-                     textInput('thalach', 'Maximum heart rate achieved per minute','180', width = "75%"),
-                     selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'), width = "75%")
+               textInput('threstbps', 'Resting blood pressure in mmHg','80', width = "75%"),
+               textInput('thalach', 'Maximum heart rate achieved per minute','180', width = "75%"),
+               selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'), width = "75%")
               )
           ),
           fluidRow(
-           h4('Lab results:'),
-           fluidRow(
-             column(6,
-              sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2)
-             ),
-             column(6,
-              selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'), width = "50%")
-             )
-           )
+            h4('Lab results:'),
+            fluidRow(
+              column(6,
+                     sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2)
+              ),
+              column(6,
+                     selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'), width = "50%")
+              )
+            )
           )
         ),
         verticalLayout(
