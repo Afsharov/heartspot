@@ -1,0 +1,10 @@
+@font-face {
+  font-family: Pacifico;
+  src: url(Pacifico-Bold.otf);
+}
+
+.main-header .logo {
+  font-family: "Pacifico";
+  font-weight: bold;
+  font-size: 28px;
+}

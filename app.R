@@ -55,7 +55,7 @@ k_means<-function(x, n=3){
 
 
 # Define UI (fluidPage is a flexible default choice) ----
-ui <- dashboardPage(
+ui <- dashboardPage(skin = "red",
   dashboardHeader(title = "HeartSpot"),
   dashboardSidebar(
     sidebarMenu(
@@ -64,6 +64,9 @@ ui <- dashboardPage(
     )
   ),
   dashboardBody(
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+    ),
     fluidPage(
       splitLayout(cellWidths = c("50%", "50%"),
         fluidPage(
