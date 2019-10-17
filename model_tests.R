@@ -4,8 +4,8 @@ library(randomForest)
 library(e1071)
 
 
-data <- read.csv(file="datasets/training_data.csv")
-test.data <- read.csv(file="datasets/testing_data.csv")
+data <- read.csv(file="/Users/abhinavsharma/Desktop/datasets/training_data.csv")
+test.data <- read.csv(file="/Users/abhinavsharma/Desktop/datasets/testing_data.csv")
 
 set.seed(3)
 train = sample(nrow(data), nrow(data)*2/3)
