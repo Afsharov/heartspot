@@ -11,13 +11,12 @@ calculate_performance_table <- function(conmatrix, classnum) {
   conmatrix <- t(conmatrix)
   
   # performance table
-  performance <- matrix( rep( 0, len=(6*classnum)), nrow = classnum)
+  performance <- matrix( rep( 0, len=(6*(classnum+1))), nrow = (classnum+1))
   colnames(performance) <- c("Precision", "Recall", "F1-Score", "TP", "FP", "FN")
-  rownames(performance) <- c("Class0", "Class1", "Class2", "Class3", "Class4")
+  rownames(performance) <- c("Class0", "Class1", "Class2", "Class3", "Class4", "Average")
   
-  # claculate all metrics and fill the table
   accuracy <- (conmatrix[1,1] + conmatrix[2,2] + conmatrix[3,3] + conmatrix[4,4] + conmatrix[5,5])/sum(conmatrix)
-  
+  # calculate all metrics of all classes and fill the table
   for (i in 1:classnum) {
     # precison
     performance[i,1] <- conmatrix[i,i]/sum(conmatrix[,i])
@@ -33,6 +32,11 @@ calculate_performance_table <- function(conmatrix, classnum) {
     performance[i,6] <- sum(conmatrix[i,]) - conmatrix[i,i]
   }
   
+  # compute average of all metrics
+  for (i in 1:classnum) {
+    performance[(classnum+1), i] <- ((performance[1,i] + performance[2,i] + performance[3,i] + performance[4,i] + performance[5,i]) / classnum)
+  }
+  
   performance <- as.table(performance)
   return(performance)
 }
@@ -43,7 +47,6 @@ tree.data_train = tree(as.factor(training_data$class)~., training_data)
 
 prediction_dt <- predict(tree.data_train, test_data, type="class")
 res_dt <- table(prediction_dt, test_data$class)
-res_dt
 
 tree.performance <- calculate_performance_table(res_dt, 5)
 tree.performance
@@ -54,7 +57,6 @@ rf.data <- randomForest(as.factor(training_data$class)~., training_data, ntree=1
 
 prediction_rf <- predict(rf.data, test_data, type="class")
 res_rf <- table(prediction_rf, test_data$class)
-res_rf
 
 rf.performance <- calculate_performance_table(res_rf, 5)
 rf.performance
@@ -65,7 +67,6 @@ svm.data <- svm(as.factor(training_data$class)~., training_data, kernel = "polyn
 
 prediction_svm <- predict(svm.data, test_data, type="class")
 res_svm <- table(prediction_svm, test_data$class)
-res_svm
 
 svm.performance <- calculate_performance_table(res_svm, 5)
 svm.performance
