@@ -62,8 +62,29 @@ rf.performance <- calculate_performance_table(res_rf, 5)
 rf.performance
 
 ########## support vector machines ##########
+# linear kernel
+set.seed(3)
+svm.data <- svm(as.factor(training_data$class)~., training_data, kernel = "linear")
+
+prediction_svm <- predict(svm.data, test_data, type="class")
+res_svm <- table(prediction_svm, test_data$class)
+
+svm.performance <- calculate_performance_table(res_svm, 5)
+svm.performance
+
+# polynomial kernel
 set.seed(3)
 svm.data <- svm(as.factor(training_data$class)~., training_data, kernel = "polynomial")
+
+prediction_svm <- predict(svm.data, test_data, type="class")
+res_svm <- table(prediction_svm, test_data$class)
+
+svm.performance <- calculate_performance_table(res_svm, 5)
+svm.performance
+
+# radial kernel
+set.seed(3)
+svm.data <- svm(as.factor(training_data$class)~., training_data, kernel = "radial")
 
 prediction_svm <- predict(svm.data, test_data, type="class")
 res_svm <- table(prediction_svm, test_data$class)
