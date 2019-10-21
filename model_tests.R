@@ -33,7 +33,7 @@ calculate_performance_table <- function(conmatrix, classnum) {
   }
   
   # compute average of all metrics
-  for (i in 1:classnum) {
+  for (i in 1:(classnum)+1) {
     performance[(classnum+1), i] <- ((performance[1,i] + performance[2,i] + performance[3,i] + performance[4,i] + performance[5,i]) / classnum)
   }
   
