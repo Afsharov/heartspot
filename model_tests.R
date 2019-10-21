@@ -9,7 +9,7 @@ test_data <- read.csv(file="datasets/testing_data.csv")
 calculate_performance_table <- function(conmatrix, classnum) {
   # transpose matrix
   conmatrix <- t(conmatrix)
-  
+
   # performance table
   performance <- matrix( rep( 0, len=(6*(classnum+1))), nrow = (classnum+1))
   colnames(performance) <- c("Precision", "Recall", "F1-Score", "TP", "FP", "FN")
@@ -41,7 +41,7 @@ calculate_performance_table <- function(conmatrix, classnum) {
   return(performance)
 }
 
-########## decision trees ##########
+########## decision tree ##########
 set.seed(3)
 tree.data_train = tree(as.factor(training_data$class)~., training_data)
 
@@ -52,6 +52,27 @@ tree.performance <- calculate_performance_table(res_dt, 5)
 tree.performance
 
 ########## random forests ##########
+# number of trees: 3
+set.seed(3)
+rf.data <- randomForest(as.factor(training_data$class)~., training_data, ntree=3)
+
+prediction_rf <- predict(rf.data, test_data, type="class")
+res_rf <- table(prediction_rf, test_data$class)
+
+rf.performance <- calculate_performance_table(res_rf, 5)
+rf.performance
+
+# number of trees: 5
+set.seed(3)
+rf.data <- randomForest(as.factor(training_data$class)~., training_data, ntree=5)
+
+prediction_rf <- predict(rf.data, test_data, type="class")
+res_rf <- table(prediction_rf, test_data$class)
+
+rf.performance <- calculate_performance_table(res_rf, 5)
+rf.performance
+
+# number of trees: 10
 set.seed(3)
 rf.data <- randomForest(as.factor(training_data$class)~., training_data, ntree=10)
 
