@@ -1,8 +1,8 @@
 #multinomial regression
 library(rattle.data)
 train_data_012 <- read.csv(file="./datasets/training_data.csv")
-#train_data_012$class[train_data_012$class == 2] <- 1
-train_data_012$class[train_data_012$class > 1] <- 2
+train_data_012$class[train_data_012$class == 2] <- 1
+train_data_012$class[train_data_012$class > 2] <- 2
 train_data_012$class <- as.factor(train_data_012$class)
 colnames(train_data_012)
 
@@ -33,10 +33,10 @@ exp(coef(multinom.fit))
 head(probability.table <- fitted(multinom.fit))
 
 # Predicting the values for train dataset
-train_012$precticed <- predict(multinom.fit, newdata = train_012, "class")
+val_data_012$precticed <- predict(multinom.fit, newdata = val_data_012, "class")
 
 # Building classification table
-ctable <- table(train_012$class, train_012$precticed)
+ctable <- table(val_data_012$class, val_data_012$precticed)
 
 # Calculating accuracy - sum of diagonal elements divided by total obs
 round((sum(diag(ctable))/sum(ctable))*100,2)
@@ -82,7 +82,7 @@ multinomial.performance
 
 
 #trying binomial
-=========================================================================================
+#=========================================================================================
 library(rattle.data)
 train_data_012 <- read.csv(file="./datasets/training_data.csv")
 #train_data_012$class[train_data_012$class == 2] <- 1
@@ -117,10 +117,10 @@ exp(coef(multinom.fit))
 head(probability.table <- fitted(multinom.fit))
 
 # Predicting the values for train dataset
-train_012$precticed <- predict(multinom.fit, newdata = train_012, "class")
+val_data_012$precticed <- predict(multinom.fit, newdata = val_data_012, "class")
 
 # Building classification table
-ctable <- table(train_012$class, train_012$precticed)
+ctable <- table(val_data_012$class, val_data_012$precticed)
 
 # Calculating accuracy - sum of diagonal elements divided by total obs
 round((sum(diag(ctable))/sum(ctable))*100,2)
