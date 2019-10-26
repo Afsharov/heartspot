@@ -23,7 +23,7 @@ ui <- dashboardPage(skin = "red",
       tabItem(tabName = "info",
         column(width = 6,
           box(width = NULL, status = "warning",
-             HTML("<h2 style='text-align: center; color:red; font-weight: bold;'>HeartSpot</h2>"),
+             HTML("<h1 style='text-align: center; color:red; font-weight: bold;'>HeartSpot</h1>"),
              HTML("<img src='image4.png' style='display: block; margin-left: auto; margin-right: auto; width: 80%;'/>"),
              HTML("<p style='text-align: center; color:gray; font-weight: bold; font-style: italic;'>AI-powered Heart Disease prediction tool</p>")
           )
