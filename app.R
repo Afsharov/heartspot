@@ -21,11 +21,26 @@ ui <- dashboardPage(skin = "red",
     ),
     tabItems(
       tabItem(tabName = "info",
-        column(width = 6,
-          box(width = NULL, status = "warning",
-             HTML("<h1 style='text-align: center; color:red; font-weight: bold;'>HeartSpot</h1>"),
-             HTML("<img src='image4.png' style='display: block; margin-left: auto; margin-right: auto; width: 80%;'/>"),
-             HTML("<p style='text-align: center; color:gray; font-weight: bold; font-style: italic;'>AI-powered Heart Disease prediction tool</p>")
+        fluidRow(
+          column(width = 6,
+            box(width = NULL, status = "danger",
+               HTML("<h1 style='text-align: center; color:red; font-weight: bold;'>HeartSpot</h1>"),
+               HTML("<img src='image4.png' style='display: block; margin-left: auto; margin-right: auto; width: 80%;'/>"),
+               p(style = "text-align: center; color:gray; font-weight: bold; font-family: 'Roboto Slab'; font-style: italic;", "AI-powered Heart Disease prediction tool")
+            )
+          ),
+          column(width = 6,
+            box(width = NULL, status = "danger",
+               h3("Description"),
+               HTML("<p align='justify'>The system you have accessed is an AI-powered web application build for health care professionals to predict the presence of Heart Disease 
+                 in a patient. We have implemented a Decision Tree model and used the <a href='http://archive.ics.uci.edu/ml/datasets/Heart+Disease'>UCI Heart Disease dataset</a> to train and test this system.</p>"),
+               h3("Usage"),
+               p(align = "justify", "By navigating to the prediction tab, you will be able to enter the variables this tool needs to calculate its prediciton. In total, this tool needs information about 10 different
+                 parameters. When all of them are entered, press the submit button to get the prediction."),
+               h3("Background"),
+               HTML("<p align='justify'>We are Health Informatics students from Karolinska Institutet in Stockholm who have build this application as part of a course project. If you are interested 
+                 in our source code or would like to get in touch with us, please have a look at our <a href='https://github.com'>GitHub</a> repository.</p>")
+            )
           )
         )
       ),
