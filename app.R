@@ -2,7 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(tree)
 
-trainingdata <- read.csv2(file = "datasets/new_data_01.csv", sep = ",") 
+trainingdata <- read.csv(file = "datasets/processed_training_data.csv", sep = ",") 
 trainingdata$class <- as.factor(trainingdata$class)
 
 set.seed(3)
