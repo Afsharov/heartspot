@@ -138,7 +138,7 @@ server <- function(input, output) {
   
   observeEvent(input$button, {
     
-    userfeatures <- data.frame(age=as.integer(input$Age), 
+    userfeatures <- data.frame(age = as.integer(input$Age), 
                                sex = sex(), 
                                cp = cp(), 
                                trestbps = input$trestbps, 
@@ -153,9 +153,9 @@ server <- function(input, output) {
     
     output$text <- renderText({ 
       if (pred == 1){
-        "This patient is at a HIGH risk of having or developing IHD"
+        "This patient is at a HIGH risk of having or developing Heart Disease."
       } else{
-        "This patient is at a LOW risk of having or developing IHD"
+        "This patient is at a LOW risk of having or developing Heart Disease."
       }
     })
   })
