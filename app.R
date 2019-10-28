@@ -2,11 +2,15 @@ library(shiny)
 library(shinydashboard)
 library(tree)
 
-trainingdata <- read.csv(file = "datasets/processed_training_data.csv", sep = ",") 
+trainingdata <- read.csv(file = "datasets/new_data_01.csv", sep = ",") 
 trainingdata$class <- as.factor(trainingdata$class)
 
 set.seed(3)
 tree.trained = tree(as.factor(trainingdata$class)~., trainingdata)
+
+restecg.result1 = 'normal'
+restecg.result2 = 'having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV'
+restecg.result3 = 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'
 
 ui <- dashboardPage(skin = "red",
   dashboardHeader(title = "HeartSpot"),
@@ -70,7 +74,7 @@ ui <- dashboardPage(skin = "red",
               sliderInput('oldpeak', 'ST depression',0,5,3.0,0.2),
               numericInput('trestbps', 'Resting blood pressure in mmHg','80', width = "75%"),
               numericInput('thalach', 'Maximum heart rate achieved per minute','180', width = "75%"),
-              selectInput('restecg', 'Resting electrocardiographic results',  c('normal','having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV', 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'), width = "75%")
+              selectInput('restecg', 'Resting electrocardiographic results',  c(restecg.result1, restecg.result2, restecg.result3), width = "75%")
             ),
             box(width = NULL, title = "Lab results", status = "danger",
               sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2),
@@ -114,11 +118,11 @@ server <- function(input, output) {
   })
   
   restecg <- reactive({
-    if (input$restecg == 'normal'){
+    if (input$restecg == restecg.result1){
       restecg <- 0
-    } else if(input$restecg == 'having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV'){
+    } else if(input$restecg == restecg.result2){
       restecg <- 1
-    } else if(input$restecg == 'showing probable or definite left ventricular hypertrophy by Estes\'\ criteria'){
+    } else if(input$restecg == restecg.result3){
       restecg <- 2
     }
   })
