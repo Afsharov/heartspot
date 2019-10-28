@@ -148,7 +148,7 @@ server <- function(input, output) {
                                trestbps = input$trestbps, 
                                chol = input$chol, 
                                fbs = fbs(), 
-                               restecg = as.numeric(input$restecg), 
+                               restecg = restecg(), 
                                thalach = input$thalach, 
                                exang = exang(), 
                                oldpeak = input$oldpeak)
