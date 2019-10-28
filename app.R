@@ -77,7 +77,7 @@ ui <- dashboardPage(skin = "red",
               selectInput('restecg', 'Resting electrocardiographic results',  c(restecg.result1, restecg.result2, restecg.result3), width = "75%")
             ),
             box(width = NULL, title = "Lab results", status = "danger",
-              sliderInput('chol', 'Serum cholesterol in mg/dl',0,20,3.5,0.2),
+              numericInput('chol', 'Serum cholesterol in mg/dl','200', width = "50%"),
               selectInput('fbs', 'Fasting blood glucose >120mg/dl', c('no','yes'), width = "50%")
             )
           )
