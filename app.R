@@ -72,7 +72,7 @@ ui <- dashboardPage(skin = "red",
             ),
             box(width = NULL, title = "ECG", status = "danger",
               sliderInput('oldpeak', 'ST depression',0,5,3.0,0.2),
-              numericInput('trestbps', 'Resting blood pressure in mmHg','80', width = "75%"),
+              numericInput('trestbps', 'Resting blood pressure in mmHg','120', width = "75%"),
               numericInput('thalach', 'Maximum heart rate achieved per minute','180', width = "75%"),
               selectInput('restecg', 'Resting electrocardiographic results',  c(restecg.result1, restecg.result2, restecg.result3), width = "75%")
             ),
