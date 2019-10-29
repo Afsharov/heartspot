@@ -64,7 +64,7 @@ ui <- dashboardPage(skin = "red",
             h2("Data Input"),
             box(width = NULL, title = "Demographics", status = "danger",
               numericInput('Age', 'Age','25', width = "50%"),  
-              selectInput('Sex', 'Gender',  c('male','female', 'unknown'), width = "50%")
+              selectInput('Sex', 'Gender',  c('male','female'), width = "50%")
             ),
             box(width = NULL, title = "Symptoms", status = "danger",
               selectInput('CP', 'Chest Pain',  c('typical angina','atypical angina', 'non-anginal pain', 'asymptomatic'), width = "75%"),
