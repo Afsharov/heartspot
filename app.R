@@ -43,7 +43,7 @@ ui <- dashboardPage(skin = "red",
                                  parameters. When all of them are entered, press the Apply button to get the prediction."),
             h3("Background"),
             HTML("<p align='justify'>We are Health Informatics students from Karolinska Institutet in Stockholm who have build this application as part of a course project. If you are interested 
-                 in our source code or would like to get in touch with us, please have a look at our <a href='https://github.com'>GitHub</a> repository.</p>")
+                 in our source code or would like to get in touch with us, please have a look at our <a href='https://github.com/Afsharov/heartspot'>GitHub</a> repository.</p>")
           )
         )
       ),
