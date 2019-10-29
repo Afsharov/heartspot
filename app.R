@@ -57,7 +57,7 @@ ui <- dashboardPage(skin = "red",
             ),
             h2("Interpretation"),
             box(width = NULL, status = "danger",
-              textOutput("text")
+              htmlOutput("result")
             )
           ),
           column(width = 4,
@@ -155,12 +155,25 @@ server <- function(input, output) {
     
     pred <- predict(tree.trained, userfeatures, type="class")
     
-    output$text <- renderText({ 
-      if (pred == 1){
-        "This patient is at a HIGH risk of having or developing Heart Disease."
+    output$result <- renderUI({ 
+      
+      result <- ""
+      color <- ""
+      if (pred == 1) {
+        result <- "high"
+        color <- "red"
       } else{
-        "This patient is at a LOW risk of having or developing Heart Disease."
+        result <- "low"
+        color <- "blue"
       }
+      HTML(sprintf("
+           <p align='justify'>Based on your input, this patient is at a <span style='color:%s; font-weight:bold;'>%s</span> 
+           risk of having or developing Heart Disease. If you would like to understand and recreate the prediction, you have 
+           to follow the corresponding path in the Decision Tree provided above. The following table explains the feature 
+           abbreviations.</p>
+           <img src='features.png' style='display: block; margin-left: auto; margin-right: auto; width: 80%%;'/>
+           ", color, result)
+      )
     })
   })
 }
