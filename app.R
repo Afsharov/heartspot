@@ -83,7 +83,10 @@ ui <- dashboardPage(skin = "red",
           )
         )
       )
-    )
+    ),
+    tags$script("document.getElementById('button').addEventListener('click', function(){
+                alert('Disclaimer: We cannot be held accountable for the accuracy or correctness of the following prediction and any actions undertaken because of the prediction are on your own responsibility.');
+    });")
   )
 )
 
