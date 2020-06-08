@@ -1,0 +1,13 @@
+name: heartspot
+title: heartspot
+username:
+account: heartspot
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1388039
+bundleId: 2548982
+url: https://heartspot.shinyapps.io/heartspot/
+when: 1572375805.3474
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rbuildignore|.RData|.travis.yml|DESCRIPTION|LICENSE|README.md|run_tests.R|tests/.DS_Store|tests/test.R

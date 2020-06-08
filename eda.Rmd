@@ -1,0 +1,48 @@
+---
+title: "UCI Explorative Data Analysis"
+author: "Masud Afschar"
+date: "6/7/2020"
+output: html_document
+---
+
+First, we combine all available data into one single data set:
+
+```{r}
+data.cleveland <- as.data.frame(read_table2('datasets/processed.cleveland.csv', na = "?"))
+names(data.cleveland)[names(data.cleveland) == "num"] <- "class"
+data.va<- as.data.frame(read_csv('datasets/processed.va.csv', na = "?"))
+data.switzerland <- as.data.frame(read_csv('datasets/processed.switzerland.csv', na = "?"))
+data.hungarian <- as.data.frame(read_table2('datasets/processed.hungarian.csv', na = "?"))
+
+data <- rbind(data.cleveland, data.va, data.switzerland, data.hungarian)
+```
+
+Next, we should check the content:
+
+```{r}
+summary(data)
+```
+
+We see that the data needs some cleanup. There are a lot of missing values in the `ca` and `thal` columns. Further, we can see that there are values of 0 for `chol`, which is clinically not plausible. These values need to be replaced with NAs as well.
+
+```{r}
+data$chol[data$chol == 0] <- NA
+summary(data)
+```
+
+We saw that the class labels are heavily imbalanced. This will very likely result in a poor prediction model. Thus, we will condense the labels two only two classes: 0 for no heart disease and 1 for heart disease.
+
+```{r}
+data$class[data$class == 2 | data$class == 3 | data$class == 4 ] <- 1
+summary(data)
+```
+
+This data set is more or less alright for model building and will be saved.
+
+```{r}
+write.csv(data, "datasets/processed.concat.csv", row.names = FALSE)
+```
+
+
+
+
