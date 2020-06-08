@@ -3,8 +3,6 @@
 
 HeartSpot is an AI-powered web application built to predict the presence of Heart Disease in a patient. The system implements a CatBoost classification model that has been trained and tested on data from the UCI Heart Disease dataset. HeartSpot is up and running as a Shiny app [here](https://heartspot.shinyapps.io/heartspot/).
 
-HeartSpot is an AI-powered web application build for health care professionals to predict the presence of heart disease in a patient. We have implemented a Decision Tree model and used the UCI Heart Disease dataset to train and test this system.
-
 [![Build Status](https://travis-ci.com/Afsharov/heartspot.svg?token=Sph7DpuhuszAqqWigRVa&branch=master)](https://travis-ci.com/Afsharov/heartspot) [![codecov](https://codecov.io/gh/Afsharov/heartspot/branch/master/graph/badge.svg?token=U9W1o4pZW8)](https://codecov.io/gh/Afsharov/heartspot) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
 ## Built With
@@ -19,21 +17,12 @@ We use [Github](https://github.com/) for versioning. For the versions available,
 
 ## Authors
 
-<<<<<<< HEAD
-* **Abhinav Sharma** - [abhinavsharma1423](https://github.com/abhinavsharma1423) 
-* **Jintai Liu** - [LeooLeoo](https://github.com/LeooLeoo) 
-* **Karl Lindborg** - [Karllindborg](https://github.com/Karllindborg) 
-* **Masud Afschar** - [Afsharov](https://github.com/Afsharov) 
-* **Suheng Shi** - [suhengshi](https://github.com/suhengshi) 
-* **Winner Ng** - [winnerng](https://github.com/winnerng) 
-=======
 * **Abhinav Sharma** - [abhinavsharma1423](https://github.com/abhinavsharma1423)
 * **Jintai Liu** - [LeooLeoo](https://github.com/LeooLeoo) 
 * **Karl Lindborg** - [Karllindborg](https://github.com/Karllindborg)
 * **Masud Afschar** - [Afsharov](https://github.com/Afsharov)
 * **Suheng Shi** - [suhengshi](https://github.com/suhengshi)
 * **Winner Ng** - [winnerng](https://github.com/winnerng)
->>>>>>> ef8032f7d0d17a836d55955c75cec38992679621
 
 ## License
 
