@@ -2,12 +2,6 @@ library(shiny)
 library(shinydashboard)
 library(catboost)
 
-# trainingdata <- read.csv(file = "datasets/processed_training_data.csv", sep = ",") 
-# trainingdata$class <- as.factor(trainingdata$class)
-# 
-# set.seed(3)
-# tree.trained = tree(as.factor(trainingdata$class)~., trainingdata)
-
 model <- catboost.load_model("model/heartspot")
 
 restecg.result1 = 'normal'
@@ -195,11 +189,6 @@ server <- function(input, output) {
       thal <- 7
     }
   })
-  
-  # output$plot1 <- renderPlot({ 
-  #   plot(tree.trained)
-  #   text(tree.trained, pretty=0)
-  # })
   
   observeEvent(input$button, {
     
