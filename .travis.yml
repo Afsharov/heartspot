@@ -23,9 +23,6 @@ before_install:
 r_packages:
   - covr
   
-r_github_packages: 
-  - catboost/catboost/R-package
-  
 env:
   - CODECOV_TOKEN="b86b39f1-47bd-4afe-9ea0-b3154c37a0e8"
 
