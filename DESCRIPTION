@@ -22,4 +22,4 @@ Imports:
  testthat,
  webdriver
 Remotes:
- url::https://github.com/catboost/catboost/tree/master/catboost/R-package
+ url::https://github.com/catboost/catboost.git
